@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FF6200EE</color>
+    <color name="primaryVariant">#FF3700B3</color>
+    <color name="secondary">#FF03DAC5</color>
+    <color name="statusBar">#F1F1F1</color>
+    <color name="navigationBar">@android:color/white</color>
+    <color name="edgeEffect">#C1C1C1</color>
+    <color name="cardBackground">@color/cardview_light_background</color>
+    <color name="andreButtonRipple">#DDDDDD</color>
+    <color name="andreBottomSheetTongue">#EAEAEA</color>
+    <color name="andreDialogFragmentBackground">@color/cardBackground</color>
+    <color name="familyArea">#F57C00</color>
+    <color name="familyAreaLight">#EDA357</color>
+    <color name="areaAttentionLevelIndicatorBackground">#F1F1F1</color>
+</resources>

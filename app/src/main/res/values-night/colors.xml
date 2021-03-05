@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="statusBar">#303030</color>
+    <color name="navigationBar">#0B0B0B</color>
+    <color name="edgeEffect">#494949</color>
+    <color name="cardBackground">@color/cardview_dark_background</color>
+    <color name="andreButtonRipple">#151515</color>
+    <color name="andreBottomSheetTongue">#424242</color>
+    <color name="andreDialogFragmentBackground">#202020</color>
+    <color name="areaAttentionLevelIndicatorBackground">#303030</color>
+</resources>

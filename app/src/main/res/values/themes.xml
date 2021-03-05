@@ -1,0 +1,72 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style
+        name="Theme.Andre"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="android:windowLightStatusBar">@bool/isSystemInLightTheme</item>
+        <item
+            name="android:windowLightNavigationBar"
+            tools:targetApi="27">
+            @bool/isSystemInLightTheme
+        </item>
+        <item name="android:statusBarColor">@color/statusBar</item>
+        <item name="android:navigationBarColor">@color/navigationBar</item>
+        <item name="android:colorEdgeEffect">@color/edgeEffect</item>
+    </style>
+
+    <style
+        name="Theme.Andre.BottomSheet"
+        parent="Widget.MaterialComponents.BottomSheet">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+    <style name="Theme.Andre.BottomSheet.Animations">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style
+        name="Theme.Andre.Button"
+        parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_marginHorizontal">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:backgroundTint">@color/cardBackground</item>
+        <item name="rippleColor">@color/andreButtonRipple</item>
+        <item name="iconTint">?android:textColorPrimary</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+
+    <style
+        name="Theme.Andre.TextInputLayout"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <declare-styleable name="AndreLinearLayout">
+        <attr name="android:horizontalSpacing" format="dimension" />
+        <attr name="android:verticalSpacing" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="AndreEditText">
+        <attr name="android:textSize" format="dimension" />
+        <attr name="android:textColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="IconButton">
+        <attr name="android:icon" format="reference" />
+        <attr name="android:iconTint" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="GenerosityBoxButton">
+        <attr name="emoji" format="string" />
+        <attr name="android:title" format="string" />
+        <attr name="price" format="float" />
+    </declare-styleable>
+</resources>
