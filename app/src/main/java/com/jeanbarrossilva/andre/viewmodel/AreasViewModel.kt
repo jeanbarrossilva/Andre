@@ -2,6 +2,7 @@ package com.jeanbarrossilva.andre.viewmodel
 
 import android.view.Menu
 import android.view.MenuInflater
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
@@ -16,17 +17,22 @@ import com.jeanbarrossilva.andre.extension.NavControllerX.navigateAnimating
 import com.jeanbarrossilva.andre.extension.NavControllerX.navigateOnceFrom
 import com.jeanbarrossilva.andre.extension.SharedPreferencesX.onToggleShowsPercentage
 import com.jeanbarrossilva.andre.extension.WindowX.enableDefaultAppearance
+import com.jeanbarrossilva.andre.fragment.AreaComposerFragment
 import com.jeanbarrossilva.andre.fragment.AreasFragment
 import com.jeanbarrossilva.andre.fragment.AreasFragmentDirections
 
 class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
-    private val areas = MutableLiveData(Area.getDefaultOnes(fragment.requireContext()))
-
+    private val areas = MutableLiveData(Area.getDefault(fragment.requireContext()))
+    
     private fun navigateToDetailsOf(area: Area) =
         fragment.findNavController().navigateOnceFrom(
             R.id.areasFragment to AreasFragmentDirections.toDetailsOf(area)
         )
-
+    
+    private fun add(area: Area) {
+        areas.value = areas.value?.plus(area) ?: areas.value
+    }
+    
     fun configSystemBars() {
         fragment.activity?.window?.enableDefaultAppearance()
     }
@@ -64,5 +70,13 @@ class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
                         )
                 }
             }
+        }
+    
+    fun waitForNewArea() =
+        fragment.setFragmentResultListener(AreaComposerFragment.RESULT_KEY_AREA_COMPOSED) {
+            _, data
+            ->
+            val composedArea = data["area"] as Area
+            add(composedArea)
         }
 }

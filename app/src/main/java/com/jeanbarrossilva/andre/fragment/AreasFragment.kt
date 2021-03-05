@@ -1,5 +1,6 @@
 package com.jeanbarrossilva.andre.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -15,6 +16,11 @@ class AreasFragment: BindingFragment<FragmentAreasBinding>({ FragmentAreasBindin
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		viewModel.showMenu()
+	}
+	
+	override fun onAttach(context: Context) {
+		super.onAttach(context)
+		viewModel.waitForNewArea()
 	}
 	
 	override fun onResume() {

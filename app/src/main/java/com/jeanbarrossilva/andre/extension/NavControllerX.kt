@@ -10,8 +10,8 @@ object NavControllerX {
 	
 	fun NavController.navigateAnimating(
 		destinationRes: Int,
-		enterAnimationRes: Int = androidx.fragment.R.animator.fragment_open_enter,
-		exitAnimationRes: Int = androidx.fragment.R.animator.fragment_close_exit,
+		enterAnimationRes: Int = android.R.anim.fade_in,
+		exitAnimationRes: Int = android.R.anim.fade_in,
 		popEnterAnimationRes: Int = enterAnimationRes,
 		popExitAnimationRes: Int = exitAnimationRes
 	) = navigate(destinationRes, null, navOptions {
@@ -30,7 +30,7 @@ object NavControllerX {
 				navigate(directions)
 		}
 	
-	@JvmName("navigateOnceToActionRes")
+	@JvmName("navigateOnceWithAction")
 	fun NavController.navigateOnceFrom(navigation: Pair<Int, Int>) =
 		navigation.let { (initialDestinationId, actionRes) ->
 			if (canNavigateFrom(initialDestinationId))

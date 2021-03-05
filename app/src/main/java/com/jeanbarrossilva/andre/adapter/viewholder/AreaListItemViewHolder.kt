@@ -6,8 +6,7 @@ import androidx.annotation.ColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.jeanbarrossilva.andre.databinding.ViewAreaListItemBinding
 
-class AreaListItemViewHolder(binding: ViewAreaListItemBinding) :
-    RecyclerView.ViewHolder(binding.root) {
+class AreaListItemViewHolder(binding: ViewAreaListItemBinding): RecyclerView.ViewHolder(binding.root) {
     val iconView = binding.iconView
     val nameView = binding.nameView
     val attentionLevelProgressBar = binding.attentionLevelProgressBar

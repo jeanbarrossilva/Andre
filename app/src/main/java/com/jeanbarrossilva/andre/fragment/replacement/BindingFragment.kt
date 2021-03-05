@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-open class BindingFragment<VB : ViewBinding>(private val bindingBlock: LayoutInflater.() -> VB) :
+open class BindingFragment<VB: ViewBinding>(private val bindingBlock: LayoutInflater.() -> VB):
     Fragment() {
     lateinit var binding: VB
         private set

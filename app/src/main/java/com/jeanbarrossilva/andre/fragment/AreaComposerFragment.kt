@@ -6,9 +6,8 @@ import com.jeanbarrossilva.andre.fragment.replacement.BindingFragment
 import com.jeanbarrossilva.andre.viewmodel.AreaComposerViewModel
 import com.jeanbarrossilva.andre.viewmodel.factory.AndreViewModelFactory.Companion.factoryOf
 
-class AreaComposerFragment: BindingFragment<FragmentAreaComposerBinding>({
-	FragmentAreaComposerBinding.inflate(this)
-}) {
+class AreaComposerFragment:
+	BindingFragment<FragmentAreaComposerBinding>({ FragmentAreaComposerBinding.inflate(this) }) {
 	private val viewModel by viewModels<AreaComposerViewModel> {
 		factoryOf<AreaComposerViewModel>(this)
 	}
@@ -18,11 +17,16 @@ class AreaComposerFragment: BindingFragment<FragmentAreaComposerBinding>({
 		viewModel.run {
 			configFab()
 			focusPrimaryField()
+			listenFields()
 		}
 	}
 	
 	override fun onDestroy() {
 		super.onDestroy()
 		viewModel.hideSoftInput()
+	}
+	
+	companion object {
+		const val RESULT_KEY_AREA_COMPOSED = "areaComposed"
 	}
 }

@@ -47,7 +47,10 @@ data class Area(
     }
 
     companion object {
-        fun getDefaultOnes(context: Context): List<Area> {
+        fun getDefaultIcon(context: Context): Icon? =
+            Icon.createWithResource(context, R.drawable.ic_help)
+        
+        fun getDefault(context: Context): List<Area> {
             val family =
                 Area(
                     context,
