@@ -10,8 +10,8 @@ object NavControllerX {
 	
 	fun NavController.navigateAnimating(
 		destinationRes: Int,
-		enterAnimationRes: Int = android.R.anim.fade_in,
-		exitAnimationRes: Int = android.R.anim.fade_in,
+		enterAnimationRes: Int = androidx.fragment.R.anim.fragment_open_enter,
+		exitAnimationRes: Int = androidx.fragment.R.anim.fragment_close_exit,
 		popEnterAnimationRes: Int = enterAnimationRes,
 		popExitAnimationRes: Int = exitAnimationRes
 	) = navigate(destinationRes, null, navOptions {

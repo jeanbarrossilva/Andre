@@ -1,8 +1,6 @@
 package com.jeanbarrossilva.andre.viewmodel
 
-import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsCompat.Type.ime
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.jeanbarrossilva.andre.R
@@ -20,7 +18,7 @@ import com.jeanbarrossilva.andre.model.AreaComposerModel
 class AreaComposerViewModel(private val fragment: AreaComposerFragment): ViewModel() {
 	private val fieldRulers =
 		with(fragment.binding) {
-			AreaComposerModel.getFieldRulers(nameFieldLayout.field, attentionLevelFieldLayout.field)
+			AreaComposerModel.getFieldRulers(nameFieldLayout, attentionLevelFieldLayout)
 		}
 	
 	private var icon = Area.getDefaultIcon(fragment.requireContext())!!
@@ -32,10 +30,7 @@ class AreaComposerViewModel(private val fragment: AreaComposerFragment): ViewMod
 	
 	private fun compose() {
 		val area = Area(icon, name, description, attentionLevel, 0x00000000)
-		fragment.setFragmentResult(
-			AreaComposerFragment.RESULT_KEY_AREA_COMPOSED,
-			bundleOf("area" to area)
-		)
+		// TODO("Implement Room database for adding areas.")
 	}
 	
 	fun configFab() =

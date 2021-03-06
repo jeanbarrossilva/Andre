@@ -25,8 +25,4 @@ class AreaComposerFragment:
 		super.onDestroy()
 		viewModel.hideSoftInput()
 	}
-	
-	companion object {
-		const val RESULT_KEY_AREA_COMPOSED = "areaComposed"
-	}
 }
