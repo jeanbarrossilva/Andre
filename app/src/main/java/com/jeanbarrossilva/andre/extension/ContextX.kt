@@ -9,6 +9,7 @@ import android.util.TypedValue
 import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleableRes
+import androidx.core.content.edit
 import androidx.core.content.res.use
 import androidx.core.content.withStyledAttributes
 import androidx.preference.PreferenceManager
@@ -39,6 +40,16 @@ object ContextX {
 	
 	infix fun Context.drawableOf(@AttrRes attrRes: Int) =
 		obtainStyledAttributes(intArrayOf(attrRes)).use { it.getDrawable(0) }
+	
+	fun Context.onFirstRun(block: () -> Unit) {
+		val key = "isFirstRun"
+		val isFirstRun = preferences.getBoolean(key, true)
+		
+		if (isFirstRun) {
+			block()
+			preferences.edit { putBoolean(key, false) }
+		}
+	}
 	
 	fun Context.toast(text: String, length: Int = DEFAULT_TOAST_LENGTH) =
 		Toast.makeText(this, text, length).show()

@@ -14,6 +14,8 @@ import com.jeanbarrossilva.andre.extension.TextInputLayoutX.field
 import com.jeanbarrossilva.andre.extension.WindowX.insetsControllerCompat
 import com.jeanbarrossilva.andre.fragment.AreaComposerFragment
 import com.jeanbarrossilva.andre.model.AreaComposerModel
+import com.jeanbarrossilva.andre.repository.AreaRepository
+import kotlinx.coroutines.launch
 
 class AreaComposerViewModel(private val fragment: AreaComposerFragment): ViewModel() {
 	private val fieldRulers =
@@ -30,7 +32,7 @@ class AreaComposerViewModel(private val fragment: AreaComposerFragment): ViewMod
 	
 	private fun compose() {
 		val area = Area(icon, name, description, color = 0x00000000, attentionLevel)
-		// TODO("Implement Room database for adding areas.")
+		AreaRepository.scope.launch { AreaRepository.addAsync(area).await() }
 	}
 	
 	fun configFab() =

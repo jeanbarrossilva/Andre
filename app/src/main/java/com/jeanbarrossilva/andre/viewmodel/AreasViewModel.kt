@@ -2,7 +2,6 @@ package com.jeanbarrossilva.andre.viewmodel
 
 import android.view.Menu
 import android.view.MenuInflater
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,18 +17,16 @@ import com.jeanbarrossilva.andre.extension.SharedPreferencesX.onToggleShowsPerce
 import com.jeanbarrossilva.andre.extension.WindowX.enableDefaultAppearance
 import com.jeanbarrossilva.andre.fragment.AreasFragment
 import com.jeanbarrossilva.andre.fragment.AreasFragmentDirections
+import com.jeanbarrossilva.andre.repository.AreaRepository
+import kotlinx.coroutines.launch
 
 class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
-    private val areas = MutableLiveData(Area.getDefault(fragment.requireContext()))
+    private suspend fun areas() = AreaRepository.getAreasAsync().await()
     
     private fun navigateToDetailsOf(area: Area) =
         fragment.findNavController().navigateOnceFrom(
             R.id.areasFragment to AreasFragmentDirections.toDetailsOf(area)
         )
-    
-    private fun add(area: Area) {
-        areas.value = areas.value?.plus(area) ?: areas.value
-    }
     
     fun configSystemBars() {
         fragment.activity?.window?.enableDefaultAppearance()
@@ -56,16 +53,22 @@ class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
 
     fun showAreas() =
         with(fragment.binding.areasRecyclerView) {
-            areas.observe(fragment) {
-                layoutManager = LinearLayoutManager(context)
-                context.preferences.onToggleShowsPercentage(context) { showsPercentage ->
-                    adapter =
-                        AreaListItemAdapter(
-                            it,
-                            showsPercentage,
-                            onAreaClick = { area -> navigateToDetailsOf(area) },
-                            onAreaHold = { }
-                        )
+            AreaRepository.scope.launch {
+                areas().let { areas ->
+                    fragment.activity?.runOnUiThread {
+                        areas.observe(fragment) {
+                            layoutManager = LinearLayoutManager(context)
+                            context.preferences.onToggleShowsPercentage(context) { showsPercentage ->
+                                adapter =
+                                    AreaListItemAdapter(
+                                        it,
+                                        showsPercentage,
+                                        onAreaClick = { area -> navigateToDetailsOf(area) },
+                                        onAreaHold = { }
+                                    )
+                            }
+                        }
+                    }
                 }
             }
         }
