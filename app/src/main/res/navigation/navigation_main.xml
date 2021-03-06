@@ -45,7 +45,7 @@
 
         <argument
             android:name="area"
-            app:argType="com.jeanbarrossilva.andre.core.Area" />
+            app:argType="com.jeanbarrossilva.andre.core.database.area.Area" />
 
     </dialog>
 

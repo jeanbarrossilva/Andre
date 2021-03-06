@@ -24,7 +24,7 @@ class AreaDetailsViewModel(private val fragment: AreaDetailsFragment) : ViewMode
     fun showDetails() =
         with(fragment.binding) {
             iconButton.iconTint = area.color
-            iconButton.setImageIcon(area.icon)
+            iconButton.setImageResource(area.iconRes, area.color)
             nameFieldLayout.field.setText(area.name)
             descriptionFieldLayout.field.setText(area.description)
             attentionLevelIndicator.progress = area.attentionLevel.toFloat()
@@ -48,7 +48,7 @@ class AreaDetailsViewModel(private val fragment: AreaDetailsFragment) : ViewMode
 
                 iconButton.background = iconButtonBackground
                 iconButton.setOnClickListener { onIconButtonClick() }
-                iconButton.setImageIcon(area.icon)
+                iconButton.setImageResource(area.iconRes, area.color)
                 nameFieldLayout.isEnabled = isEditing
                 nameFieldLayout.setTint(area.color)
                 descriptionFieldLayout.isEnabled = isEditing

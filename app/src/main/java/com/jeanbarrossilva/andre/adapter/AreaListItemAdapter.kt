@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jeanbarrossilva.andre.R
 import com.jeanbarrossilva.andre.adapter.viewholder.AreaListItemViewHolder
-import com.jeanbarrossilva.andre.core.Area
+import com.jeanbarrossilva.andre.core.database.area.Area
 import com.jeanbarrossilva.andre.databinding.ViewAreaListItemBinding
 
 class AreaListItemAdapter(
@@ -24,7 +24,7 @@ class AreaListItemAdapter(
 	override fun onBindViewHolder(holder: AreaListItemViewHolder, position: Int) {
 		areas[position].let { area ->
 			holder.nameView.text = area.name
-			holder.iconView.setImageIcon(area.icon)
+			holder.iconView.setImageResource(area.iconRes)
 			holder.itemView.setOnClickListener { onAreaClick(area) }
 			holder.itemView.setOnLongClickListener {
 				onAreaHold(area)

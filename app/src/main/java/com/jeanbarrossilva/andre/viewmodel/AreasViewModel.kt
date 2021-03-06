@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jeanbarrossilva.andre.R
 import com.jeanbarrossilva.andre.adapter.AreaListItemAdapter
-import com.jeanbarrossilva.andre.core.Area
+import com.jeanbarrossilva.andre.core.database.area.Area
 import com.jeanbarrossilva.andre.extension.ContextX.preferences
 import com.jeanbarrossilva.andre.extension.FragmentX.withFab
 import com.jeanbarrossilva.andre.extension.MenuInflaterX.inflate

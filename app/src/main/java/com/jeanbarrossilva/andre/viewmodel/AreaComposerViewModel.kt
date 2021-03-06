@@ -4,9 +4,9 @@ import androidx.core.view.WindowInsetsCompat.Type.ime
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.jeanbarrossilva.andre.R
-import com.jeanbarrossilva.andre.core.Area
 import com.jeanbarrossilva.andre.core.FieldRuler.Companion.areRulesFollowed
 import com.jeanbarrossilva.andre.core.FieldRuler.Companion.scream
+import com.jeanbarrossilva.andre.core.database.area.Area
 import com.jeanbarrossilva.andre.extension.EditTextX.doOnTextChanged
 import com.jeanbarrossilva.andre.extension.EditTextX.focusWithInput
 import com.jeanbarrossilva.andre.extension.FragmentX.withFab
@@ -21,7 +21,7 @@ class AreaComposerViewModel(private val fragment: AreaComposerFragment): ViewMod
 			AreaComposerModel.getFieldRulers(nameFieldLayout, attentionLevelFieldLayout)
 		}
 	
-	private var icon = Area.getDefaultIcon(fragment.requireContext())!!
+	private var icon = Area.DEFAULT_ICON_RES
 	private var name = ""
 	private var description = ""
 	private var attentionLevel = 0
@@ -29,7 +29,7 @@ class AreaComposerViewModel(private val fragment: AreaComposerFragment): ViewMod
 	private fun canCompose() = fieldRulers.areRulesFollowed
 	
 	private fun compose() {
-		val area = Area(icon, name, description, attentionLevel, 0x00000000)
+		val area = Area(icon, name, description, color = 0x00000000, attentionLevel)
 		// TODO("Implement Room database for adding areas.")
 	}
 	
