@@ -24,7 +24,8 @@ sealed class SubareaIndicator(@StringRes val titleRes: Int) {
 			else -> values.indexOf(this) + 1
 		}
 
-	fun levelAsPercentage() = values.map { indicator -> indicator.level() }.greater() / level()
+	fun levelAsPercentage() =
+		level().toFloat() / values.map { indicator -> indicator.level() }.greater()
 
 	companion object {
 		val values = listOf(Deficient, Unsatisfied, Acceptable, Satisfied, Realized)

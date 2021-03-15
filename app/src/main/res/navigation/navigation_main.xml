@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/blankFragment">
+
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.BlankFragment"
+        tools:layout="@layout/fragment_blank">
+
+        <action
+            android:id="@+id/to_subareas_of"
+            app:destination="@id/subareasFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/subareasFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.SubareasFragment"
+        android:label="SubareasFragment"
+        app:launchSingleTop="true"
+        tools:layout="@layout/fragment_subareas">
+
+        <argument
+            android:name="area"
+            app:argType="com.jeanbarrossilva.andre.core.Area" />
+
+    </fragment>
+
+</navigation>

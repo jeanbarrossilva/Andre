@@ -1,30 +1,23 @@
 package com.jeanbarrossilva.andre.core
 
 import android.content.Context
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Architecture
-import androidx.compose.material.icons.rounded.EscalatorWarning
-import androidx.compose.material.icons.rounded.FamilyRestroom
-import androidx.compose.material.icons.rounded.Person
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import com.jeanbarrossilva.andre.R
 import java.io.Serializable
 
 @Suppress("Unused")
 sealed class Area(
-	imageVector: ImageVector,
+	@DrawableRes val iconRes: Int,
 	val title: String,
-	val color: Color,
+	@ColorInt val color: Int,
 	val subareas: List<Subarea>
 ): Serializable {
-	val icon = AndreIcon(imageVector, "$title icon")
-
 	class LifeQuality(context: Context):
 		Area(
-			Icons.Rounded.FamilyRestroom,
+			R.drawable.ic_multiline_chart,
 			title = context.getString(R.string.Area_name_life_quality),
-			Color(0x00F57C00),
+			0x00F57C00,
 			listOf(
 				Subarea.Health(context),
 				Subarea.Lounge(context),
@@ -34,9 +27,9 @@ sealed class Area(
 	
 	class Personal(context: Context):
 		Area(
-			Icons.Rounded.Person,
+			R.drawable.ic_person,
 			title = context.getString(R.string.Area_name_personal),
-			Color(0x00EF233C),
+			0x00EF233C,
 			listOf(
 				Subarea.Emotional(context),
 				Subarea.Happiness(context),
@@ -46,9 +39,9 @@ sealed class Area(
 	
 	class Professional(context: Context):
 		Area(
-			Icons.Rounded.Architecture,
+			R.drawable.ic_architecture,
 			title = context.getString(R.string.Area_name_professional),
-			Color(0x004895EF),
+			0x004895EF,
 			listOf(
 				Subarea.Career(context),
 				Subarea.Contribution(context),
@@ -58,9 +51,9 @@ sealed class Area(
 	
 	class Relationships(context: Context):
 		Area(
-			Icons.Rounded.EscalatorWarning,
+			R.drawable.ic_escalator_warning,
 			title = context.getString(R.string.Area_name_relationships),
-			Color(0x0074C69D),
+			0x0074C69D,
 			listOf(
 				Subarea.Family(context),
 				Subarea.Love(context),
@@ -69,12 +62,16 @@ sealed class Area(
 		)
 	
 	companion object {
-		fun values(context: Context) =
-			listOf(
-				LifeQuality(context),
-				Personal(context),
-				Professional(context),
-				Relationships(context)
-			)
+		fun values(context: Context?) =
+			context
+				?.let {
+					listOf(
+						LifeQuality(context),
+						Personal(context),
+						Professional(context),
+						Relationships(context)
+					)
+				}
+				.orEmpty()
 	}
 }

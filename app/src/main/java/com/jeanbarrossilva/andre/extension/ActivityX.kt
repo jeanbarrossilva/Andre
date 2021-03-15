@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.children
+import androidx.fragment.app.FragmentContainerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.jeanbarrossilva.andre.extension.ViewGroupX.find
 
@@ -14,7 +16,9 @@ object ActivityX {
     private val Activity.content
         get() = window?.decorView?.findViewById<FrameLayout>(android.R.id.content)
     
+    val Activity.bottomNavigationView get() = find<BottomNavigationView>()
     val Activity.fab get() = find<FloatingActionButton>()
+    val Activity.fragmentContainerView get() = find<FragmentContainerView>()
     val Activity.toolbar get() = find<Toolbar>()
     val Activity.view get() = content?.children?.first() as? ViewGroup
     
