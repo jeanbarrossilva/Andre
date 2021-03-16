@@ -8,11 +8,9 @@ import com.afollestad.materialdialogs.utils.MDUtil.isLandscape
 import com.jeanbarrossilva.andre.R
 import com.jeanbarrossilva.andre.activity.MainActivity
 import com.jeanbarrossilva.andre.core.Area
-import com.jeanbarrossilva.andre.extension.ActivityX.bottomNavigationView
 import com.jeanbarrossilva.andre.extension.AppCompatActivityX.currentFragment
 import com.jeanbarrossilva.andre.extension.BottomNavigationViewX.setupWithAreas
-import com.jeanbarrossilva.andre.extension.ContextX.isSystemInLightTheme
-import com.jeanbarrossilva.andre.extension.ContextX.navigationBarColor
+import com.jeanbarrossilva.andre.extension.ContextX.isSystemInDarkTheme
 import com.jeanbarrossilva.andre.extension.WindowX.insetsControllerCompat
 import com.jeanbarrossilva.andre.fragment.BlankFragmentDirections
 
@@ -28,7 +26,7 @@ class MainViewModel(private val activity: MainActivity): ViewModel() {
 	
 	fun configBottomNavigation() {
 		val areas = Area.values(activity)
-		activity.bottomNavigationView?.setupWithAreas(areas, onSelectArea = {
+		activity.binding.bottomNavigation.setupWithAreas(areas, onSelectArea = {
 			navigateToSubareasOf(it)
 		})
 	}
@@ -40,8 +38,8 @@ class MainViewModel(private val activity: MainActivity): ViewModel() {
 	
 	fun changeNavBarColorForOrientation() {
 		activity.window?.navigationBarColor =
-			if (activity.isLandscape()) Color.BLACK else activity.navigationBarColor
+			if (activity.isLandscape()) Color.BLACK else activity.getColor(R.color.navigationBar)
 		activity.window?.insetsControllerCompat?.isAppearanceLightNavigationBars =
-			!activity.isLandscape() && activity.isSystemInLightTheme
+			!activity.isLandscape() && !activity.isSystemInDarkTheme
 	}
 }

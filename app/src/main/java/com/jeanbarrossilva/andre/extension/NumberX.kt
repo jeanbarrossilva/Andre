@@ -23,8 +23,5 @@ object NumberX {
     fun Number.dp(context: Context?) =
         context?.converting(this to TypedValue.COMPLEX_UNIT_DIP) ?: 0
 
-    fun Number.sp(context: Context?) =
-        context?.converting(this to TypedValue.COMPLEX_UNIT_SP) ?: 0f
-
     inline fun <reified T : Number> Number.to() = to(T::class)
 }
