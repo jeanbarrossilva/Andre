@@ -4,60 +4,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/areasFragment">
+    app:startDestination="@id/blankFragment">
 
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.SettingsFragment"
-        android:label="@string/menu_main_settings">
+        android:id="@+id/blankFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.BlankFragment"
+        tools:layout="@layout/fragment_blank">
 
         <action
-            android:id="@+id/be_generous"
-            app:destination="@id/generosityBoxFragment" />
+            android:id="@+id/to_subareas_of"
+            app:destination="@id/subareasFragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/areasFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.AreasFragment"
-        android:label="@string/AreasFragment_label"
-        tools:layout="@layout/fragment_areas">
-
-        <action
-            android:id="@+id/to_details_of"
-            app:destination="@id/areaDetailsFragment" />
-
-        <action
-            android:id="@+id/compose"
-            app:destination="@id/areaComposerFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popExitAnim="@android:anim/fade_out" />
-
-    </fragment>
-
-    <dialog
-        android:id="@+id/areaDetailsFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.AreaDetailsFragment"
-        android:label="AreaDetailsFragment"
-        tools:layout="@layout/fragment_area_details">
+        android:id="@+id/subareasFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.SubareasFragment"
+        android:label="SubareasFragment"
+        app:launchSingleTop="true"
+        tools:layout="@layout/fragment_subareas">
 
         <argument
             android:name="area"
-            app:argType="com.jeanbarrossilva.andre.core.database.area.Area" />
+            app:argType="com.jeanbarrossilva.andre.core.Area" />
 
-    </dialog>
+        <action
+            android:id="@+id/to_details_of"
+            app:destination="@id/subareaDetailsFragment" />
 
-    <fragment
-        android:id="@+id/areaComposerFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.AreaComposerFragment"
-        android:label="@string/AreaComposerFragment_label"
-        tools:layout="@layout/fragment_area_composer" />
+    </fragment>
 
     <dialog
-        android:id="@+id/generosityBoxFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.GenerosityBoxFragment"
-        tools:layout="@layout/fragment_generosity_box" />
+        android:id="@+id/subareaDetailsFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.SubareaDetailsFragment"
+        android:label="SubareaDetailsFragment"
+        tools:layout="@layout/fragment_area_details">
+
+        <argument
+            android:name="subarea"
+            app:argType="com.jeanbarrossilva.andre.core.Subarea" />
+
+    </dialog>
 
 </navigation>

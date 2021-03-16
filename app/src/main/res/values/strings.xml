@@ -1,58 +1,40 @@
 <resources>
     <string name="app_name">Andre</string>
 
-    <string name="Area_name_family">Family</string>
-    <string name="Area_description_family">Time invested and quality of your familiar relationships.</string>
-    <string name="Area_name_health">Health</string>
-    <string name="Area_description_health">Time invested taking care of your health.</string>
-    <string name="Area_name_knowledge">Knowledge</string>
-    <string name="Area_description_knowledge">Intellectual growth.</string>
-    <string name="Area_name_work">Work</string>
-    <string name="Area_description_work">Attention given to your professional role.</string>
+    <string name="Area_name_life_quality">Life quality</string>
+    <string name="Area_name_personal">Personal</string>
+    <string name="Area_name_professional">Professional</string>
+    <string name="Area_name_relationships">Relationships</string>
 
-    <string name="menu_main_settings">Settings</string>
+    <string name="Subarea_name_health">Health</string>
+    <string name="Subarea_name_lounge">Lounge</string>
+    <string name="Subarea_name_spirituality">Spirituality</string>
+    <string name="Subarea_name_emotional">Emotional</string>
+    <string name="Subarea_name_happiness">Happiness</string>
+    <string name="Subarea_name_intellect">Intellect</string>
+    <string name="Subarea_name_career">Career</string>
+    <string name="Subarea_name_contribution">Contribution</string>
+    <string name="Subarea_name_finances">Finances</string>
+    <string name="Subarea_name_family">Family</string>
+    <string name="Subarea_name_love">Love</string>
+    <string name="Subarea_name_social">Social</string>
 
-    <string name="settings_category_areas_list">Areas list</string>
+    <string name="SubareaIndicator_title_unset">Unset</string>
+    <string name="SubareaIndicator_title_deficient">Deficient</string>
+    <string name="SubareaIndicator_title_unsatisfied">Unsatisfied</string>
+    <string name="SubareaIndicator_title_acceptable">Acceptable</string>
+    <string name="SubareaIndicator_title_satisfied">Satisfied</string>
+    <string name="SubareaIndicator_title_realized">Realized</string>
+
     <string
         name="settings_key_show_percentage"
         translatable="false">
         com.jeanbarrossilva.andre.fragment.SettingsFragment$showPercentage
     </string>
-    <string name="settings_setting_title_show_percentage">Show percentage</string>
-    <string name="settings_setting_summary_on_show_percentage">Displaying a text to represent your attention levels\' percentages.</string>
-    <string name="settings_setting_summary_off_show_percentage">Displaying a round progress bar to represent your attention levels.</string>
-    <string name="settings_category_feedback">Feedback</string>
-    <string
-        name="settings_key_generosity_box"
-        translatable="false">
-        com.jeanbarrossilva.fragment.SettingsFragment$generosityBox
-    </string>
-    <string name="settings_setting_title_generosity_box">Generosity box</string>
-    <string name="settings_setting_summary_generosity_box">If you\'re feeling generous, you can help me continue developing apps by donating any amount you want!</string>
-    <string
-        name="settings_key_send_feedback"
-        translatable="false">
-        com.jeanbarrossilva.andre.fragment.SettingsFragment$sendFeedback
-    </string>
-    <string name="settings_setting_title_send_feedback">Send feedback</string>
 
     <string name="dialog_title_send_feedback_error">Could not send feedback</string>
     <string name="dialog_message_send_feedback_error">You have to have an e-mail app in order to send a feedback.</string>
 
     <string name="AreasFragment_label">Areas</string>
-    <string name="AreaComposerFragment_label">New area</string>
 
-    <string name="GenerosityBoxFragment_option_great">Great</string>
-    <string name="GenerosityBoxFragment_option_nice">Nice</string>
-    <string name="GenerosityBoxFragment_option_amazing">Amazing</string>
-
-    <string name="AreaComposerFragment_name">Name</string>
-    <string name="AreaComposerFragment_description">Description</string>
-    <string name="AreaComposerFragment_attention_level">Attention level</string>
-    <string name="AreaComposerFragment_complaint_name">Name can\'t be empty.</string>
-    <string name="AreaComposerFragment_complaint_attention_level">Attention level must be greater than 0.</string>
-
-    <string name="AreaDetailsFragment_toast_default_area_edit">You cannot edit a default area.</string>
-    <string name="AreaDetailsFragment_edit">Edit</string>
-    <string name="AreaDetailsFragment_done">Done</string>
 </resources>

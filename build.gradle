@@ -6,8 +6,7 @@ buildscript {
         version_name = '1.0'
 
         kotlin_version = '1.4.31'
-        navigation_version = '2.3.3'
-        room_version = '2.2.6'
+        navigation_version = '2.3.4'
     }
 
     repositories {
