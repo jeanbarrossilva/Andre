@@ -28,6 +28,22 @@
             android:name="area"
             app:argType="com.jeanbarrossilva.andre.core.Area" />
 
+        <action
+            android:id="@+id/to_details_of"
+            app:destination="@id/subareaDetailsFragment" />
+
     </fragment>
+
+    <dialog
+        android:id="@+id/subareaDetailsFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.SubareaDetailsFragment"
+        android:label="SubareaDetailsFragment"
+        tools:layout="@layout/fragment_area_details">
+
+        <argument
+            android:name="subarea"
+            app:argType="com.jeanbarrossilva.andre.core.Subarea" />
+
+    </dialog>
 
 </navigation>

@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
@@ -36,6 +39,7 @@ open class  AndreBottomSheetDialogFragment<VB : ViewBinding>(
         super.onCreateView(inflater, container, savedInstanceState)
         bottomSheetBinding = FragmentAndreBottomSheetDialogBinding.inflate(inflater)
         bottomSheetBinding.content.addView(binding.root)
+        binding.root.layoutParams = ConstraintLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         return bottomSheetBinding.root
     }
     

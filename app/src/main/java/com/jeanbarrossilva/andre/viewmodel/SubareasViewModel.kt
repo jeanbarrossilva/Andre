@@ -4,13 +4,17 @@ import android.graphics.Color
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.jeanbarrossilva.andre.BuildConfig
+import com.jeanbarrossilva.andre.core.Subarea
 import com.jeanbarrossilva.andre.core.SubareaIndicator
 import com.jeanbarrossilva.andre.extension.ChartX.setExtraOffsets
+import com.jeanbarrossilva.andre.extension.ChartX.setOnChartValueSelectedListener
 import com.jeanbarrossilva.andre.fragment.SubareasFragment
+import com.jeanbarrossilva.andre.fragment.SubareasFragmentDirections
 
 class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 	private val area = fragment.area
@@ -28,6 +32,9 @@ class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 			}
 		}
 	}
+	
+	private fun navigateToDetailsOf(subarea: Subarea) =
+		fragment.findNavController().navigate(SubareasFragmentDirections.toDetailsOf(subarea))
 	
 	fun configSubareasForDebugging() {
 		if (BuildConfig.DEBUG)
@@ -57,6 +64,10 @@ class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 			isDrawHoleEnabled = false
 			setExtraOffsets(30f)
 			setDrawEntryLabels(false)
+			setOnChartValueSelectedListener { entry, _ ->
+				val subarea = subareas[entries.indexOf(entry)]
+				navigateToDetailsOf(subarea)
+			}
 			invalidate()
 		}
 	}
