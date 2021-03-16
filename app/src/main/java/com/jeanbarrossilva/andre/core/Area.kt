@@ -1,6 +1,7 @@
 package com.jeanbarrossilva.andre.core
 
 import android.content.Context
+import android.graphics.Color
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import com.jeanbarrossilva.andre.R
@@ -17,7 +18,7 @@ sealed class Area(
 		Area(
 			R.drawable.ic_multiline_chart,
 			title = context.getString(R.string.Area_name_life_quality),
-			0x00F57C00,
+			Color.parseColor("#F57C00"),
 			listOf(
 				Subarea.Health(context),
 				Subarea.Lounge(context),
@@ -29,7 +30,7 @@ sealed class Area(
 		Area(
 			R.drawable.ic_person,
 			title = context.getString(R.string.Area_name_personal),
-			0x00EF233C,
+			Color.parseColor("#EF233C"),
 			listOf(
 				Subarea.Emotional(context),
 				Subarea.Happiness(context),
@@ -41,7 +42,7 @@ sealed class Area(
 		Area(
 			R.drawable.ic_architecture,
 			title = context.getString(R.string.Area_name_professional),
-			0x004895EF,
+			Color.parseColor("#4895EF"),
 			listOf(
 				Subarea.Career(context),
 				Subarea.Contribution(context),
@@ -53,7 +54,7 @@ sealed class Area(
 		Area(
 			R.drawable.ic_escalator_warning,
 			title = context.getString(R.string.Area_name_relationships),
-			0x0074C69D,
+			Color.parseColor("#74C69D"),
 			listOf(
 				Subarea.Family(context),
 				Subarea.Love(context),
