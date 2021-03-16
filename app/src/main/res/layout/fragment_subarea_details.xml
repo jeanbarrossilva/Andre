@@ -25,23 +25,24 @@
                 android:id="@+id/title_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Happinness"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="?android:textColorPrimary" />
+                android:textColor="?android:textColorPrimary"
+                tools:text="@string/Subarea_name_happiness" />
 
             <TextView
                 android:id="@+id/indicator_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Realized"
-                android:textSize="17sp" />
+                android:textSize="17sp"
+                android:text="@string/SubareaIndicator_title_realized" />
 
         </com.jeanbarrossilva.andre.ui.AndreLinearLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="2dp"
             app:contentPadding="12dp"
             app:cardCornerRadius="19999999dp">
 
@@ -49,7 +50,7 @@
                 android:id="@+id/icon_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_mood"
+                tools:src="@drawable/ic_mood"
                 tools:tint="#FF9505"
                 tools:ignore="ContentDescription" />
 
