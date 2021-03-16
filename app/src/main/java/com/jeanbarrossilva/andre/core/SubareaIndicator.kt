@@ -18,7 +18,9 @@ sealed class SubareaIndicator(@StringRes val titleRes: Int): Serializable {
 	object Satisfied: SubareaIndicator(R.string.SubareaIndicator_title_satisfied)
 
 	object Realized: SubareaIndicator(R.string.SubareaIndicator_title_realized)
-
+	
+	override fun toString() = "SubareaIndicator.${this::class.simpleName}"
+	
 	fun level() =
 		when (this) {
 			is Unset -> throw IllegalAccessException("This SubareaIndicator is unset!")

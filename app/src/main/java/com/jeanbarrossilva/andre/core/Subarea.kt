@@ -2,18 +2,24 @@ package com.jeanbarrossilva.andre.core
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.jeanbarrossilva.andre.R
 import java.io.Serializable
 
-sealed class Subarea(
-	@DrawableRes val iconRes: Int,
-	val title: String,
-	@ColorInt val color: Int,
-	open var indicator: SubareaIndicator = SubareaIndicator.Unset
+sealed class Subarea(@DrawableRes val iconRes: Int, val title: String, @ColorInt val color: Int
 ): Serializable {
+	private val indicatorChanges = mutableListOf<SubareaIndicatorChange>()
+	
+	var indicator: SubareaIndicator = SubareaIndicator.Unset
+		set(value) {
+			field = value
+			indicatorChanges.add(SubareaIndicatorChange(value))
+			Log.d("Subarea", "Indicator changes of ${this::class.simpleName}: $indicatorChanges")
+		}
+	
 	constructor(
 		context: Context,
 		@DrawableRes iconRes: Int,
@@ -56,4 +62,6 @@ sealed class Subarea(
 
 	class Social(context: Context):
 		Subarea(context, R.drawable.ic_groups, Color.parseColor("#FF9505"), R.string.Subarea_name_social)
+	
+	fun indicatorChanges() = indicatorChanges.toList()
 }
