@@ -9,7 +9,7 @@ android {
     buildToolsVersion '30.0.3'
 
     defaultConfig {
-        applicationId 'com.jeanbarrossilva.andre'
+        applicationId 'com.jeanbarrossilva.vita'
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
         versionCode version_code
@@ -49,6 +49,7 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.1.1'
     implementation 'androidx.work:work-runtime:2.5.0'
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    implementation 'com.github.anychart:anychart-android:1.1.2'
     implementation 'com.github.duanhong169:drawabletoolbox:1.0.7'
     implementation 'com.github.philjay:mpandroidchart:v3.1.0'
     implementation 'com.google.android.material:material:1.4.0-alpha01'
