@@ -51,11 +51,11 @@ class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 		val chart =
 			AndrePieChart(fragment.requireContext()).apply {
 				showsEntryValues = false
-				onSelectEntry = {
+				add(entries)
+				setOnSelectEntryListener {
 					val subarea = subareas[entries.indexOf(it)]
 					navigateToDetailsOf(subarea)
 				}
-				add(entries)
 				view.setExtraOffsets(30f)
 			}
 		

@@ -69,7 +69,8 @@ class AndrePieChart(context: Context): AndreChart<PieChart> {
 	
 	override fun setOnSelectEntryListener(listener: AndreChart.OnSelectEntryListener) {
 		view.setOnChartValueSelectedListener { entry, _ ->
-			listener.onSelectEntry((entry as PieEntry).toAndreChartEntry())
+			val andreChartEntry = (entry as PieEntry).toAndreChartEntry()
+			listener.onSelectEntry(andreChartEntry)
 		}
 	}
 	
