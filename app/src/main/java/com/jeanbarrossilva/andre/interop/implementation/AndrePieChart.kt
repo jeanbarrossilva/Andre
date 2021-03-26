@@ -6,7 +6,6 @@ import android.util.Log
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.MPPointF
-import com.jeanbarrossilva.andre.extension.BooleanX.orFalse
 import com.jeanbarrossilva.andre.extension.ChartX.setOnChartValueSelectedListener
 import com.jeanbarrossilva.andre.extension.PieChartX.setEmptyData
 import com.jeanbarrossilva.andre.interop.AndreChart
@@ -23,16 +22,13 @@ class AndrePieChart(context: Context): AndreChart<PieChart> {
 			isDrawHoleEnabled = false
 			invalidate()
 		}
-	override var showsEntryLabels = view.isDrawEntryLabelsEnabled.orFalse()
-		set(value) {
-			field = value
-			view.setDrawEntryLabels(value)
-		}
-	override var showsEntryValues = view.data?.dataSet?.isDrawValuesEnabled.orFalse()
-		set(value) {
-			field = value
-			view.data.dataSet.valueTextColor = if (value) Color.WHITE else Color.TRANSPARENT
-		}
+	
+	override fun setShowEntryLabels(showsEntryLabels: Boolean) =
+		view.setDrawEntryLabels(showsEntryLabels)
+	
+	override fun setShowEntryValues(showsEntryValues: Boolean) {
+		view.data.dataSet.valueTextColor = if (showsEntryValues) Color.WHITE else Color.TRANSPARENT
+	}
 	
 	override fun add(entry: AndreChartEntry) {
 		view.data.dataSet.colors.add(entry.color)

@@ -4,8 +4,6 @@ import android.view.View
 
 interface AndreChart<V: View> {
 	val view: V
-	var showsEntryLabels: Boolean
-	var showsEntryValues: Boolean
 	
 	interface OnSelectEntryListener {
 		fun onSelectEntry(entry: AndreChartEntry)
@@ -17,6 +15,10 @@ interface AndreChart<V: View> {
 				}
 		}
 	}
+	
+	fun setShowEntryLabels(showsEntryLabels: Boolean)
+	
+	fun setShowEntryValues(showsEntryValues: Boolean)
 	
 	fun add(entry: AndreChartEntry)
 	
