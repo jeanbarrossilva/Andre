@@ -20,6 +20,7 @@ class SubareasFragment:
 		super.onViewCreated(view, savedInstanceState)
 		viewModel.run {
 			configSubareasForDebugging()
+			configFab()
 			showSubareasInChart()
 		}
 	}

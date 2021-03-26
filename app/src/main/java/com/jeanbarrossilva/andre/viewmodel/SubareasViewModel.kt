@@ -1,10 +1,12 @@
 package com.jeanbarrossilva.andre.viewmodel
 
+import android.content.res.ColorStateList
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.jeanbarrossilva.andre.BuildConfig
+import com.jeanbarrossilva.andre.activity.MainActivity
 import com.jeanbarrossilva.andre.core.Subarea
 import com.jeanbarrossilva.andre.core.SubareaIndicator
 import com.jeanbarrossilva.andre.extension.ChartX.setExtraOffsets
@@ -36,6 +38,11 @@ class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 	fun configSubareasForDebugging() {
 		if (BuildConfig.DEBUG)
 			setIndicatorsRandomlyForSubareas()
+	}
+	
+	fun configFab() {
+		(fragment.activity as MainActivity).binding.fab.imageTintList =
+			ColorStateList.valueOf(area.color)
 	}
 	
 	fun showSubareasInChart() {
