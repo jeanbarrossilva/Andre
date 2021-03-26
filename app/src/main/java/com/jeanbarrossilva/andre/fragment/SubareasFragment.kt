@@ -19,7 +19,6 @@ class SubareasFragment:
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		viewModel.run {
-			configSubareasForDebugging()
 			configFab()
 			showSubareasInChart()
 		}

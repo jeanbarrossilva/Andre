@@ -25,20 +25,20 @@ class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 				subarea.indicator = SubareaIndicator.values.random()
 				Log.d(
 					"SubareasViewModel.setIndicatorsRandomlyForSubareas",
-					"${subarea::class.simpleName}'s indicator = " +
+					"${subarea::class.simpleName} indicator = " +
 						"${subarea.indicator::class.simpleName}"
 				)
 			}
 		}
 	}
 	
-	private fun navigateToDetailsOf(subarea: Subarea) =
-		fragment.findNavController().navigate(SubareasFragmentDirections.toDetailsOf(subarea))
-	
-	fun configSubareasForDebugging() {
+	private fun configSubareasForDebugging() {
 		if (BuildConfig.DEBUG)
 			setIndicatorsRandomlyForSubareas()
 	}
+	
+	private fun navigateToDetailsOf(subarea: Subarea) =
+		fragment.findNavController().navigate(SubareasFragmentDirections.toDetailsOf(subarea))
 	
 	fun configFab() {
 		(fragment.activity as MainActivity).binding.fab.imageTintList =
@@ -67,5 +67,9 @@ class SubareasViewModel(private val fragment: SubareasFragment): ViewModel() {
 			}
 		
 		fragment.binding.chartLayout.addView(chart.view)
+	}
+	
+	init {
+		configSubareasForDebugging()
 	}
 }
