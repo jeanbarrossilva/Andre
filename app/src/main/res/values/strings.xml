@@ -26,15 +26,8 @@
     <string name="SubareaIndicator_title_satisfied">Satisfied</string>
     <string name="SubareaIndicator_title_realized">Realized</string>
 
-    <string
-        name="settings_key_show_percentage"
-        translatable="false">
-        com.jeanbarrossilva.andre.fragment.SettingsFragment$showPercentage
-    </string>
-
-    <string name="dialog_title_send_feedback_error">Could not send feedback</string>
-    <string name="dialog_message_send_feedback_error">You have to have an e-mail app in order to send a feedback.</string>
-
     <string name="AreasFragment_label">Areas</string>
 
+    <string name="AreaOptionsBottomSheetFragment_edit">Edit</string>
+    <string name="AreaOptionsBottomSheetFragment_delete">Delete</string>
 </resources>

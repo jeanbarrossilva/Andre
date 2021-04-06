@@ -15,8 +15,9 @@ import com.jeanbarrossilva.andre.R
 import com.jeanbarrossilva.andre.extension.ViewX.rootWindowInsetsCompat
 import com.jeanbarrossilva.andre.extension.WindowX.insetsControllerCompat
 
-open class AndreDialogFragment<VB: ViewBinding>(bindingBlock: LayoutInflater.() -> VB):
-	BindingDialogFragment<VB>(bindingBlock) {
+open class AndreDialogFragment<VB: ViewBinding>(
+	override val bindingBlock: (inflater: LayoutInflater, container: ViewGroup?) -> VB
+): BindingDialogFragment<VB>(bindingBlock) {
 	private val onShowListeners = mutableListOf<DialogInterface.OnShowListener>()
 	
 	override fun onCreateView(

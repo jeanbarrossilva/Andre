@@ -2,18 +2,24 @@ package com.jeanbarrossilva.andre.core
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.util.Log
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import com.jeanbarrossilva.andre.R
 import java.io.Serializable
 
-sealed class Subarea(@DrawableRes val iconRes: Int, val title: String, @ColorInt val color: Int
+sealed class Subarea(
+	context: Context,
+	val icon: Drawable,
+	val title: String,
+	@ColorInt val color: Int
 ): Serializable {
 	private val indicatorChanges = mutableListOf<SubareaIndicatorChange>()
 	
-	var indicator: SubareaIndicator = SubareaIndicator.Unset
+	var indicator: SubareaIndicator = SubareaIndicator.Unset(context)
 		set(value) {
 			field = value
 			indicatorChanges.add(SubareaIndicatorChange(value))
@@ -25,7 +31,12 @@ sealed class Subarea(@DrawableRes val iconRes: Int, val title: String, @ColorInt
 		@DrawableRes iconRes: Int,
 		@ColorInt color: Int,
 		@StringRes titleRes: Int
-	): this(iconRes, context.getString(titleRes), color)
+	): this(
+		context,
+		ContextCompat.getDrawable(context, iconRes)!!,
+		context.getString(titleRes),
+		color
+	)
 
 	class Health(context: Context):
 		Subarea(context, R.drawable.ic_health_and_safety, Color.parseColor("#450EE3"), R.string.Subarea_name_health)
@@ -62,6 +73,4 @@ sealed class Subarea(@DrawableRes val iconRes: Int, val title: String, @ColorInt
 
 	class Social(context: Context):
 		Subarea(context, R.drawable.ic_groups, Color.parseColor("#FF9505"), R.string.Subarea_name_social)
-	
-	fun indicatorChanges() = indicatorChanges.toList()
 }

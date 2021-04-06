@@ -2,16 +2,16 @@ package com.jeanbarrossilva.andre.interop.implementation
 
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.MPPointF
 import com.jeanbarrossilva.andre.extension.ChartX.setOnChartValueSelectedListener
 import com.jeanbarrossilva.andre.extension.PieChartX.setEmptyData
+import com.jeanbarrossilva.andre.extension.PieEntryX.toAndreChartEntry
 import com.jeanbarrossilva.andre.interop.AndreChart
 import com.jeanbarrossilva.andre.interop.AndreChartEntry
 
-class AndrePieChart(context: Context): AndreChart<PieChart> {
+class AndrePieChart(context: Context): AndreChart<PieEntry, PieChart> {
 	override val view =
 		PieChart(context).apply {
 			setEmptyData()
@@ -22,6 +22,12 @@ class AndrePieChart(context: Context): AndreChart<PieChart> {
 			isDrawHoleEnabled = false
 			invalidate()
 		}
+	override var entries = super.entries
+		set(value) {
+			field = value
+			view.data.dataSet.clear()
+			value.forEach { entry -> view.data.dataSet.addEntry(entry.original) }
+		}
 	
 	override fun setShowEntryLabels(showsEntryLabels: Boolean) =
 		view.setDrawEntryLabels(showsEntryLabels)
@@ -30,25 +36,15 @@ class AndrePieChart(context: Context): AndreChart<PieChart> {
 		view.data.dataSet.valueTextColor = if (showsEntryValues) Color.WHITE else Color.TRANSPARENT
 	}
 	
-	override fun add(entry: AndreChartEntry) {
+	override fun add(entry: AndreChartEntry<PieEntry>) {
 		view.data.dataSet.colors.add(entry.color)
-		Log.d("AndrePieChart.add", "Color after addition: ${view.data.dataSet.colors}")
-		view.data.dataSet.addEntry(entry.toPieEntry())
-		view.invalidate()
+		view.data.dataSet.addEntry(entry.original)
 	}
 	
-	override fun setOnSelectEntryListener(listener: AndreChart.OnSelectEntryListener) {
+	override fun setOnSelectEntryListener(listener: AndreChart.OnSelectEntryListener<PieEntry>) {
 		view.setOnChartValueSelectedListener { entry, _ ->
-			val andreChartEntry = (entry as PieEntry).toAndreChartEntry()
+			val andreChartEntry = (entry as PieEntry).toAndreChartEntry(view.data.dataSet)
 			listener.onSelectEntry(andreChartEntry)
 		}
-	}
-	
-	private fun AndreChartEntry.toPieEntry() =
-		PieEntry(value, title, icon).apply { icon.setTint(Color.WHITE) }
-	
-	private fun PieEntry.toAndreChartEntry(): AndreChartEntry {
-		val color = view.data.dataSet.colors[view.data.dataSet.getEntryIndex(this)]!!
-		return AndreChartEntry(label, icon, value, color)
 	}
 }

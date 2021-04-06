@@ -3,9 +3,6 @@
     <style
         name="Theme.Andre"
         parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primaryVariant</item>
-        <item name="colorSecondary">@color/secondary</item>
         <item name="android:windowLightStatusBar">@bool/isSystemInLightTheme</item>
         <item
             name="android:windowLightNavigationBar"
@@ -14,7 +11,17 @@
         </item>
         <item name="android:statusBarColor">@color/statusBar</item>
         <item name="android:navigationBarColor">@color/navigationBar</item>
-        <item name="android:colorEdgeEffect">@color/edgeEffect</item>
+        <item name="android:fontFamily">@font/pt_sans</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
+        <item name="colorSecondary">@color/secondary</item>
+    </style>
+
+    <style
+        name="Theme.Andre.Toolbar.Title"
+        parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:fontFamily">?android:fontFamily</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style
@@ -35,24 +42,12 @@
         <attr name="android:verticalSpacing" />
     </declare-styleable>
 
-    <declare-styleable name="AndreFlexboxLayout">
-        <attr name="android:horizontalSpacing" />
-        <attr name="android:verticalSpacing" />
-    </declare-styleable>
-
     <declare-styleable name="AndreEditText">
         <attr name="android:textSize" format="dimension" />
         <attr name="android:textColor" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="IconButton">
-        <attr name="android:icon" format="reference" />
-        <attr name="android:iconTint" format="color" />
-    </declare-styleable>
-
-    <declare-styleable name="GenerosityBoxButton">
-        <attr name="emoji" format="string" />
-        <attr name="android:title" format="string" />
-        <attr name="price" format="float" />
+    <declare-styleable name="AndreRecyclerView">
+        <attr name="android:spacing" format="dimension" />
     </declare-styleable>
 </resources>

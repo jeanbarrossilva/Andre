@@ -4,46 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/blankFragment">
-
+    app:startDestination="@id/areasFragment">
     <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.BlankFragment"
-        tools:layout="@layout/fragment_blank">
-
+        android:id="@+id/areasFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.AreasFragment"
+        android:label="@string/AreasFragment_label"
+        tools:layout="@layout/fragment_areas">
         <action
-            android:id="@+id/to_subareas_of"
-            app:destination="@id/subareasFragment" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/subareasFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.SubareasFragment"
-        android:label="SubareasFragment"
-        app:launchSingleTop="true"
-        tools:layout="@layout/fragment_subareas">
-
-        <argument
-            android:name="area"
-            app:argType="com.jeanbarrossilva.andre.core.Area" />
-
-        <action
-            android:id="@+id/to_details_of"
-            app:destination="@id/subareaDetailsFragment" />
-
+            android:id="@+id/show_options_of"
+            app:destination="@id/areaOptionsBottomSheetFragment" />
     </fragment>
 
     <dialog
-        android:id="@+id/subareaDetailsFragment"
-        android:name="com.jeanbarrossilva.andre.fragment.SubareaDetailsFragment"
-        android:label="SubareaDetailsFragment"
-        tools:layout="@layout/fragment_area_details">
-
+        android:id="@+id/areaOptionsBottomSheetFragment"
+        android:name="com.jeanbarrossilva.andre.fragment.AreaOptionsBottomSheetFragment"
+        android:label="AreaOptionsBottomSheetFragment">
         <argument
-            android:name="subarea"
-            app:argType="com.jeanbarrossilva.andre.core.Subarea" />
-
+            android:name="area"
+            app:argType="com.jeanbarrossilva.andre.core.Area" />
     </dialog>
-
 </navigation>

@@ -1,36 +1,77 @@
 package com.jeanbarrossilva.andre.core
 
+import android.content.Context
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import com.jeanbarrossilva.andre.R
-import com.jeanbarrossilva.andre.extension.ListX.greater
 import java.io.Serializable
 
 @Suppress("Unused")
-sealed class SubareaIndicator(@StringRes val titleRes: Int): Serializable {
-	object Unset: SubareaIndicator(R.string.SubareaIndicator_title_unset)
+sealed class SubareaIndicator(val title: String, @ColorInt val color: Int): Serializable {
+	constructor(context: Context, @StringRes titleRes: Int, @ColorRes colorRes: Int):
+		this(context.getString(titleRes), context.getColor(colorRes))
+	
+	data class Unset(private val context: Context):
+		SubareaIndicator(
+			context,
+			R.string.SubareaIndicator_title_unset,
+			android.R.color.transparent
+		)
 
-	object Deficient: SubareaIndicator(R.string.SubareaIndicator_title_deficient)
+	data class Deficient(private val context: Context):
+		SubareaIndicator(
+			context,
+			R.string.SubareaIndicator_title_deficient,
+			R.color.SubareaIndicator_deficient
+		)
 
-	object Unsatisfied: SubareaIndicator(R.string.SubareaIndicator_title_unsatisfied)
+	data class Unsatisfied(private val context: Context):
+		SubareaIndicator(
+			context,
+			R.string.SubareaIndicator_title_unsatisfied,
+			R.color.SubareaIndicator_unsatisfied
+		)
 
-	object Acceptable: SubareaIndicator(R.string.SubareaIndicator_title_acceptable)
+	data class Acceptable(private val context: Context):
+		SubareaIndicator(
+			context,
+			R.string.SubareaIndicator_title_acceptable,
+			R.color.SubareaIndicator_acceptable
+		)
 
-	object Satisfied: SubareaIndicator(R.string.SubareaIndicator_title_satisfied)
+	data class Satisfied(private val context: Context):
+		SubareaIndicator(
+			context,
+			R.string.SubareaIndicator_title_satisfied,
+			R.color.SubareaIndicator_satisfied
+		)
 
-	object Realized: SubareaIndicator(R.string.SubareaIndicator_title_realized)
+	data class Realized(private val context: Context):
+		SubareaIndicator(
+			context,
+			R.string.SubareaIndicator_title_realized,
+			R.color.SubareaIndicator_realized
+		)
 	
 	override fun toString() = "SubareaIndicator.${this::class.simpleName}"
 	
-	fun level() =
+	fun level(context: Context) =
 		when (this) {
 			is Unset -> throw IllegalAccessException("This SubareaIndicator is unset!")
-			else -> values.indexOf(this) + 1
+			else -> values(context).indexOf(this) + 1
 		}
 
-	fun levelAsPercentage() =
-		level().toFloat() / values.map { indicator -> indicator.level() }.greater()
-
 	companion object {
-		val values = listOf(Deficient, Unsatisfied, Acceptable, Satisfied, Realized)
+		fun values(context: Context?) =
+			context?.let {
+				listOf(
+					Deficient(context),
+					Unsatisfied(context),
+					Acceptable(context),
+					Satisfied(context),
+					Realized(context)
+				)
+			} ?: emptyList()
 	}
 }

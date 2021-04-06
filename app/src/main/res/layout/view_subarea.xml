@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jeanbarrossilva.andre.ui.AndreLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:verticalSpacing="10dp">
+
+    <TextView
+        android:id="@+id/title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/Subarea_name_happiness" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.jeanbarrossilva.andre.ui.SubareaIndicatorView
+            android:id="@+id/indicator_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6" />
+
+        <TextView
+            android:id="@+id/indicator_title_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_weight="0.4"
+            tools:text="@string/SubareaIndicator_title_unset" />
+
+    </LinearLayout>
+
+</com.jeanbarrossilva.andre.ui.AndreLinearLayout>

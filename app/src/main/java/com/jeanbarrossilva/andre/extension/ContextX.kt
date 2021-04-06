@@ -5,6 +5,7 @@ import android.content.res.TypedArray
 import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleableRes
 import androidx.core.content.res.use
@@ -14,6 +15,7 @@ import com.jeanbarrossilva.andre.extension.NumberX.to
 
 object ContextX {
 	val Context.isSystemInDarkTheme get() = resources.getBoolean(R.bool.isSystemInDarkTheme)
+	val Context.layoutInflater: LayoutInflater get() = LayoutInflater.from(this)
 	
 	@PublishedApi
 	internal inline infix fun <reified T : Number> Context.converting(

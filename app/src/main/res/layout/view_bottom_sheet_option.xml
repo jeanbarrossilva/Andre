@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stateListAnimator="@null"
+    android:clickable="true"
+    android:gravity="center_vertical"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="25dp"
+    android:elevation="0dp"
+    android:fontFamily="@font/roboto"
+    android:textAllCaps="false"
+    android:textColor="?android:textColorPrimary"
+    android:background="?android:selectableItemBackground"
+    android:backgroundTint="@android:color/transparent"
+    app:elevation="0dp"
+    app:iconTint="?android:textColorPrimary"
+    app:iconPadding="25dp"
+    tools:icon="@drawable/ic_add"
+    tools:text="Add" />

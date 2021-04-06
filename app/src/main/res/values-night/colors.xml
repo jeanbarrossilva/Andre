@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#A668FF</color>
     <color name="statusBar">#303030</color>
-    <color name="navigationBar">#2D2D2D</color>
-    <color name="edgeEffect">#494949</color>
+    <color name="navigationBar">#121212</color>
     <color name="cardBackground">@color/cardview_dark_background</color>
     <color name="andreBottomSheetTongue">#424242</color>
     <color name="andreDialogFragmentBackground">#202020</color>
+    <color name="areaCardBackground">#212121</color>
+    <color name="areaCardStroke">#212121</color>
+    <color name="subareaIndicatorBubble">#303030</color>
 </resources>

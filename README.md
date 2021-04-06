@@ -2,8 +2,8 @@
 A life manager app for Android.
 
 <div align="center" style="margin-top: 60px; margin-bottom: 50px">
-    <img height="400" src="screenshots/home.jpg">
-    <img height="400" src="screenshots/subarea-details.jpg">
+    <img height="400" src="screenshots/home-light.jpg">
+    <img height="400" src="screenshots/home-dark.jpg">
 </div>
 
 **NOTE: This project is still a work in progress!**

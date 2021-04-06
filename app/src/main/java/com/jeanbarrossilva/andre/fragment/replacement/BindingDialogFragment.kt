@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 
-open class BindingDialogFragment<VB: ViewBinding>(private val bindingBlock: LayoutInflater.() -> VB):
-	DialogFragment() {
+open class BindingDialogFragment<VB: ViewBinding>(
+	open val bindingBlock: (inflater: LayoutInflater, container: ViewGroup?) -> VB
+): DialogFragment() {
 	lateinit var binding: VB
 		private set
 	
@@ -17,7 +18,7 @@ open class BindingDialogFragment<VB: ViewBinding>(private val bindingBlock: Layo
 		container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View {
-		binding = bindingBlock(inflater)
+		binding = bindingBlock(inflater, container)
 		return binding.root
 	}
 }

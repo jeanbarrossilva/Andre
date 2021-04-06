@@ -8,7 +8,7 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 open class BindingBottomSheetDialogFragment<VB : ViewBinding>(
-    private val bindingBlock: LayoutInflater.() -> VB
+    open val bindingBlock: (inflater: LayoutInflater, container: ViewGroup?) -> VB
 ) : BottomSheetDialogFragment() {
     lateinit var binding: VB
         private set
@@ -18,7 +18,7 @@ open class BindingBottomSheetDialogFragment<VB : ViewBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = bindingBlock(inflater)
+        binding = bindingBlock(inflater, container)
         return binding.root
     }
 }

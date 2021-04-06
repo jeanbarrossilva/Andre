@@ -21,7 +21,7 @@ import com.jeanbarrossilva.andre.extension.BottomSheetDialogFragmentX.sheet
 import com.jeanbarrossilva.andre.extension.ViewX.setOnSoftInputListener
 
 open class  AndreBottomSheetDialogFragment<VB : ViewBinding>(
-    bindingBlock: LayoutInflater.() -> VB
+    override val bindingBlock: (inflater: LayoutInflater, container: ViewGroup?) -> VB
 ) : BindingBottomSheetDialogFragment<VB>(bindingBlock) {
     private lateinit var bottomSheetBinding: FragmentAndreBottomSheetDialogBinding
     private val onShowListeners = mutableListOf<DialogInterface.OnShowListener>()
@@ -37,7 +37,8 @@ open class  AndreBottomSheetDialogFragment<VB : ViewBinding>(
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        bottomSheetBinding = FragmentAndreBottomSheetDialogBinding.inflate(inflater)
+        bottomSheetBinding =
+            FragmentAndreBottomSheetDialogBinding.inflate(inflater, container, false)
         bottomSheetBinding.content.addView(binding.root)
         binding.root.layoutParams = ConstraintLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         return bottomSheetBinding.root

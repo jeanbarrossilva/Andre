@@ -2,8 +2,6 @@
 <resources>
     <string name="app_name">Andre</string>
     <string name="AreasFragment_label">Áreas</string>
-    <string name="dialog_title_send_feedback_error">Não foi possível enviar feedback</string>
-    <string name="dialog_message_send_feedback_error">Você precisa de um aplicativo de e-mail para enviar um feedback.</string>
     <string name="Area_name_life_quality">Qualidade de vida</string>
     <string name="Area_name_personal">Pessoal</string>
     <string name="Area_name_professional">Profissional</string>
@@ -26,4 +24,6 @@
     <string name="SubareaIndicator_title_acceptable">Aceitável</string>
     <string name="SubareaIndicator_title_satisfied">Satisfeito</string>
     <string name="SubareaIndicator_title_realized">Realizado</string>
+    <string name="AreaOptionsBottomSheetFragment_delete">Remover</string>
+    <string name="AreaOptionsBottomSheetFragment_edit">Editar</string>
 </resources>
