@@ -7,11 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jeanbarrossilva.andre.BuildConfig
 import com.jeanbarrossilva.andre.R
 import com.jeanbarrossilva.andre.activity.AreaComposerActivity
 import com.jeanbarrossilva.andre.core.Area
-import com.jeanbarrossilva.andre.core.SubareaIndicator
 import com.jeanbarrossilva.andre.extension.ActivityX.withFab
 import com.jeanbarrossilva.andre.extension.NavControllerX.navigateOnce
 import com.jeanbarrossilva.andre.fragment.AreasFragment
@@ -31,17 +29,6 @@ class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
 				fragment.activity?.runOnUiThread { block(areas) }
 			}
 		}
-	
-	private fun configSubareaIndicatorsForDebugging() {
-		if (BuildConfig.DEBUG)
-			withAreas { areas ->
-				areas.forEach { area ->
-					area.subareas.forEach { subarea ->
-						subarea.indicator = SubareaIndicator.values(fragment.context).random()
-					}
-				}
-			}
-	}
 	
 	fun configFab() {
 		fragment.activity?.withFab {
@@ -73,9 +60,5 @@ class AreasViewModel(private val fragment: AreasFragment): ViewModel() {
 				)
 		}
 		fragment.binding.areasView.layoutManager = LinearLayoutManager(fragment.context)
-	}
-	
-	init {
-		configSubareaIndicatorsForDebugging()
 	}
 }
